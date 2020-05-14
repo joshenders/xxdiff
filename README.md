@@ -54,8 +54,7 @@ $ xxdiff oldfile newfile | xxdd
 for item in $(base64 -d <<< 'H4sIAHivvF4C/z3OwQ3AIAxD0VU6QhIgCd0GWrr/CBWSzem/k+UMlbvLlaGKGlrQijbU0UAT7ejYtTXiYBIP8RKL+DaKuHRiAKaEEYWoRCOcCCIJLttZnsQ+9gM/tF3ECwEAAA==' | gunzip); do dd bs=1 count=1 conv=notrunc seek=$((16#${item%:*})) if=<(printf %b "\x${item#*:}") of='oldfile'; done
 ```
 
-The shell script fragment can be shared to apply the patch. In the future, an
-`xxdiff -a|--apply <patchfile> <oldfile>` may also be supported.
+In the future, an `xxdiff -a|--apply <patchfile> <oldfile>` may also be supported.
 
 ## Installation
 
