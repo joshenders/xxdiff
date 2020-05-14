@@ -84,7 +84,7 @@ pipenv \
 WIP
 
 ```bash
-make tests
+make test
 ```
 
 ## License
