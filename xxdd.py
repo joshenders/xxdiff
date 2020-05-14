@@ -13,7 +13,7 @@ def print_script(outfile, patch_bytes):
     compressed = gzip.compress(serialized)
     payload = base64.b64encode(compressed).decode()
 
-    # minified version of payload-unminified.sh
+    # minified version of unminified.sh
     print(f"for item in $(base64 -d <<< '{payload}' | gunzip); do "
           f"dd bs=1 count=1 conv=notrunc seek=$((16#${{item%:*}})) "
           f"if=<(printf %b \"\\x${{item#*:}}\") of='{outfile}'; done")
