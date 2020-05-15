@@ -9,14 +9,17 @@ import re
 from unidiff import PatchSet
 
 def print_script(outfile, patch_bytes):
-    serialized = bytearray(' '.join(['{}:{}'.format(key, value) for key, value in patch_bytes.items()]), 'utf-8')
-    compressed = gzip.compress(serialized)
-    payload = base64.b64encode(compressed).decode()
+    patch_map = ' '.join(['{}:{}'.format(key, value) for key, value in patch_bytes.items()])
 
     # minified version of unminified.sh
-    print(f"for item in $(base64 -d <<< '{payload}' | gunzip); do "
-          f"dd bs=1 count=1 conv=notrunc seek=$((16#${{item%:*}})) "
-          f"if=<(printf %b \"\\x${{item#*:}}\") of='{outfile}'; done")
+    payload = bytearray(f"for item in {patch_map}; do "
+                        f"dd bs=1 count=1 conv=notrunc seek=$((16#${{item%:*}})) "
+                        f"if=<(printf %b \"\\x${{item#*:}}\") of='{outfile}'; done", 'utf-8')
+
+    compressed = gzip.compress(payload)
+    encoded = base64.b64encode(compressed).decode()
+
+    print(f"base64 -d <<< '{encoded}' | gunzip | bash")
 
 
 def main():

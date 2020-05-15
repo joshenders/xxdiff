@@ -2,12 +2,13 @@
 
 ## About
 
-`xxdiff` and `xxdd` are simple utilities which make distributing and applying binary
-patches easy for non-technical users. See also `bsdiff` and `bspatch`.
+`xxdiff` and `xxdd` are simple utilities which make distributing and applying
+binary patches easy for non-technical users. See also `bsdiff` and `bspatch`.
 
 ## Usage
 
-When you're ready to distribute your patch, run `xxdiff` to produce an "xxdiff".
+When you're ready to distribute your patch, run `xxdiff` to produce an
+"xxdiff".
 
 ```bash
 $ xxdiff oldfile newfile
@@ -47,12 +48,18 @@ $ xxdiff oldfile newfile
 
 You can stop here and share this file as-is or you can pipe the output to
 `xxdd` which will output a minified shell script fragment capable of applying
-the xxdiff.
+the xxdiff on most Linux distributions (like Debian or Ubuntu) or macOS.
 
 ```bash
 $ xxdiff oldfile newfile | xxdd
-for item in $(base64 -d <<< 'H4sIAHivvF4C/z3OwQ3AIAxD0VU6QhIgCd0GWrr/CBWSzem/k+UMlbvLlaGKGlrQijbU0UAT7ejYtTXiYBIP8RKL+DaKuHRiAKaEEYWoRCOcCCIJLttZnsQ+9gM/tF3ECwEAAA==' | gunzip); do dd bs=1 count=1 conv=notrunc seek=$((16#${item%:*})) if=<(printf %b "\x${item#*:}") of='oldfile'; done
+base64 -d <<< 'H4sIAGYAv14C/z3QSwrCMBCA4asM1tLWhSSpfWpu4qZpEwnWRGotgnh3ic509X8Qm
+Bli/AR21jewDuqKs7ZhoRwrsDn2gC2wJbbC1tgG24UK3VUrFKEnDARNMAE5K1lD6BCCEwQhJxwIBaEkV
+ISaQJPFOlkRwmFHGDwMA6iH5ND7p5t/dYt0fp6eroeH1le5TVNeRtt3+MG43X2yDKyRp/Q+WTcbiBVsz
+q//c7RrP5sMvJGJGfVLLfuFs6LZ+8lerOvGJKx0+gvJtx2VkAEAAA==' | gunzip | bash
 ```
+
+The shell script fragment is a minimal version of [unminified.sh](unminfied.sh)
+which can be used for testing.
 
 In the future, an `xxdiff -a|--apply <patchfile> <oldfile>` may also be supported.
 
