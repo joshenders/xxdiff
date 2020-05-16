@@ -82,6 +82,8 @@ make install
 
 WIP
 
+#### Dependencies
+
 ```bash
 pipenv \
     install \
@@ -90,7 +92,7 @@ pipenv \
 
 ```
 
-## Pre-commit hooks
+#### Pre-commit hooks
 
 ```bash
 pre-commit autoupdate
