@@ -109,5 +109,5 @@ make test
 
 ## License
 
-This work is licensed under CC BY-NC version 4.0 https://creativecommons.org/licenses/by-nc/4.0/
+This work is licensed under CC BY-NC version 4.0 [https://creativecommons.org/licenses/by-nc/4.0/](https://creativecommons.org/licenses/by-nc/4.0/)
 © 2020, Josh Enders. Some Rights Reserved.
