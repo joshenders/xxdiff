@@ -2,16 +2,14 @@
 
 function main() {
     if [[ "$#" -ne 2 ]]; then
-        echo "${0##./}: <outfile> <payload>" >&2
+        echo "${0##./}: <outfile> <patch_map>" >&2
         exit 1
     fi
 
     local outfile="$1"
-    local payload="$2"
-    # shellcheck disable=SC2207
-    local patch=($(base64 --decode <<< "${payload}" | gunzip))
- 
-    for item in "${patch[@]}"; do
+    local patch_map=("$2")
+
+    for item in "${patch_map[@]}"; do
         local offset=$((16#${item%:*}))
         local value="${item#*:}"
 
