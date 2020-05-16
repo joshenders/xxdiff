@@ -8,7 +8,7 @@
 ## About
 
 `xxdiff` and `xxdd` are simple utilities which make distributing and applying
-binary patches easy for non-technical users. See also `bsdiff` and `bspatch`.
+binary patches easy for non-technical users. See also [`bsdiff`](https://www.freebsd.org/cgi/man.cgi?query=bsdiff) and [`bspatch`](https://www.freebsd.org/cgi/man.cgi?query=bspatch).
 
 ## Usage
 
