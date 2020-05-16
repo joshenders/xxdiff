@@ -7,11 +7,14 @@ function main() {
     fi
 
     local outfile="$1"
-    local patch_map=("$2")
+    declare -a patch_map
+    read -ra patch_map <<< "$2"
 
     for item in "${patch_map[@]}"; do
         local offset=$((16#${item%:*}))
         local value="${item#*:}"
+
+        printf "Patching offset: %s, value: %s\r" "0x${item%:*}" "0x${value}"
 
         dd \
             bs=1 \
@@ -19,8 +22,15 @@ function main() {
             conv=notrunc \
             seek="${offset}" \
             if=<(printf %b "\x${value}") \
-            of="${outfile}"
+            of="${outfile}" 2>&1 \
+        | grep \
+            --extended-regexp \
+            --invert-match \
+                'bytes transferred|records (in|out)'
+        sleep .03
     done
+
+    printf "\n"
 }
 
 main "$@"
