@@ -85,6 +85,13 @@ pipenv \
 
 ```
 
+## Pre-commit hooks
+
+```bash
+pre-commit autoupdate
+pre-commit install
+```
+
 ### Running tests
 
 WIP
