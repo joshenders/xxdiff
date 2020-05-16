@@ -2,7 +2,6 @@
 
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![image](https://img.shields.io/badge/pypi-pipenv-blue.svg)](https://python.org/pypi/pipenv)
-[![pre-commit](https://img.shields.io/badge/pre--commit-enabled-blue)](https://github.com/pre-commit/pre-commit)
 [![Code style: black](https://img.shields.io/badge/code%20style-black-black.svg)](https://github.com/psf/black)
 [![License: CC BY-NC 4.0](https://img.shields.io/badge/license-CC%20BY--NC%204.0-lightgrey.svg)](https://creativecommons.org/licenses/by-nc/4.0/)
 
