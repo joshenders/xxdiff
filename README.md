@@ -58,7 +58,7 @@ ISaQJPFOlkRwmFHGDwMA6iH5ND7p5t/dYt0fp6eroeH1le5TVNeRtt3+MG43X2yDKyRp/Q+WTcbiBVsz
 q//c7RrP5sMvJGJGfVLLfuFs6LZ+8lerOvGJKx0+gvJtx2VkAEAAA==' | gunzip | bash
 ```
 
-The shell script fragment is a minimal version of [unminified.sh](unminfied.sh)
+The shell script fragment is a minimal version of [unminified.sh](unminified.sh)
 which can be used for testing.
 
 In the future, an `xxdiff -a|--apply <patchfile> <oldfile>` may also be supported.
