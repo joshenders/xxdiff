@@ -1,4 +1,4 @@
-# xxdd
+# xxdiff Project
 
 [![Python 3.7](https://img.shields.io/badge/python-3.7-blue.svg)](https://www.python.org/downloads/release/python-370/)
 [![image](https://img.shields.io/badge/pypi-pipenv-blue.svg)](https://python.org/pypi/pipenv)
@@ -8,16 +8,16 @@
 ## About
 
 `xxdiff` and `xxdd` are simple utilities which make distributing and applying
-binary patches easy for non-technical users.
+binary patches easy and convenient.
 
 See also [`bsdiff`](https://www.freebsd.org/cgi/man.cgi?query=bsdiff) and [`bspatch`](https://www.freebsd.org/cgi/man.cgi?query=bspatch).
 
 ## Usage
 
 When you're ready to distribute your patch, run `xxdiff` to produce an
-"xxdiff".
+_xxdiff_.
 
-```bash
+```sh
 $ xxdiff oldfile newfile
 --- oldfile 2020-05-14 02:19:46.000000000 +0000
 +++ newfile 2020-05-14 02:19:46.000000000 +0000
@@ -54,10 +54,10 @@ $ xxdiff oldfile newfile
 ```
 
 You can stop here and share this file as-is or you can pipe the output to
-`xxdd` which will output a minified shell script fragment capable of applying
+`xxdd` which will output a compact shell script fragment capable of applying
 the xxdiff on most Linux distributions (like Debian or Ubuntu) or macOS.
 
-```bash
+```sh
 $ xxdiff oldfile newfile | xxdd
 base64 -d <<< 'H4sIAGYAv14C/z3QSwrCMBCA4asM1tLWhSSpfWpu4qZpEwnWRGotgnh3ic509X8Qm
 Bli/AR21jewDuqKs7ZhoRwrsDn2gC2wJbbC1tgG24UK3VUrFKEnDARNMAE5K1lD6BCCEwQhJxwIBaEkV
@@ -65,16 +65,19 @@ ISaQJPFOlkRwmFHGDwMA6iH5ND7p5t/dYt0fp6eroeH1le5TVNeRtt3+MG43X2yDKyRp/Q+WTcbiBVsz
 q//c7RrP5sMvJGJGfVLLfuFs6LZ+8lerOvGJKx0+gvJtx2VkAEAAA==' | gunzip | bash
 ```
 
-The shell script fragment is a minimal version of [src/unminified.sh](src/unminified.sh)
+The shell script fragment is a compact version of [src/map-apply.sh](src/map-apply.sh)
 which can be used for testing.
 
-In the future, an `xxdiff -a|--apply <patchfile> <oldfile>` may also be supported.
+## Improvements
+
+In the future, a `xxdiff -a|--apply <xxdiff> <outfile>` may also be
+supported in addition to checksum verification.
 
 ## Installation
 
 WIP
 
-```bash
+```sh
 make install
 ```
 
@@ -86,7 +89,7 @@ WIP
 
 #### Dependencies
 
-```bash
+```sh
 pipenv \
     install \
         --dev
@@ -96,7 +99,7 @@ pipenv \
 
 #### Pre-commit hooks
 
-```bash
+```sh
 pre-commit autoupdate
 pre-commit install
 ```
@@ -105,7 +108,7 @@ pre-commit install
 
 WIP
 
-```bash
+```sh
 make test
 ```
 

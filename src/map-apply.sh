@@ -7,8 +7,9 @@ function main() {
     fi
 
     local outfile="$1"
-    declare -a patch_map
-    read -ra patch_map <<< "$2"
+    local patch_map=()
+
+    IFS=" " read -ra patch_map <<< "$2"
 
     for item in "${patch_map[@]}"; do
         local offset=$((16#${item%:*}))
@@ -27,7 +28,7 @@ function main() {
             --extended-regexp \
             --invert-match \
                 'bytes transferred|records (in|out)'
-        sleep .03
+        sleep .03 # vanity
     done
 
     printf "\n"

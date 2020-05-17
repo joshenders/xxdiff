@@ -2,7 +2,6 @@
 
 import base64
 import gzip
-import logging
 import sys
 import re
 
@@ -14,7 +13,7 @@ def print_script(outfile, patch_bytes):
         ["{}:{}".format(key, value) for key, value in patch_bytes.items()]
     )
 
-    # minified version of unminified.sh
+    # compact version of map-apply.sh
     payload = bytearray(
         f"for item in {patch_map}; do"
         f" dd bs=1 count=1 conv=notrunc seek=$((16#${{item%:*}}))"
@@ -62,15 +61,19 @@ def main():
     patch_bytes = {}
 
     for offset in changes:
-        # print(f'offset: {offset}')
+        # print(f"offset: {offset}")
         for i in range(16):
             source_byte = changes[offset]["source"][i]
             target_byte = changes[offset]["target"][i]
-            # print(f'i: {i}')
+            # print(f"i: {i}")
             if source_byte != target_byte:
                 cursor = format(int(offset, base=16) + i, "x")
                 patch_bytes[cursor] = target_byte
-                # print(f'cursor: {cursor}, source_byte: {source_byte}, target_byte: {target_byte}')
+                # print(
+                #     f"cursor: {cursor}, "
+                #     f"source_byte: {source_byte}, "
+                #     f"target_byte: {target_byte}"
+                # )
 
     print_script(source_file, patch_bytes)
 
