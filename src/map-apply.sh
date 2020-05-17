@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+
 function main() {
     if [[ "$#" -ne 2 ]]; then
         echo "${0##./}: <outfile> <patch_map>" >&2
@@ -11,11 +12,13 @@ function main() {
 
     IFS=" " read -ra patch_map <<< "$2"
 
+    # printf "Patch size: %s bytes\n" "${#patch_map[@]}"
+
     for item in "${patch_map[@]}"; do
         local offset=$((16#${item%:*}))
         local value="${item#*:}"
 
-        printf "Patching offset: %s, value: %s\r" "0x${item%:*}" "0x${value}"
+        # printf "Patching offset: %s, value: %s\r" "0x${item%:*}" "0x${value}"
 
         dd \
             bs=1 \
@@ -28,10 +31,9 @@ function main() {
             --extended-regexp \
             --invert-match \
                 'bytes transferred|records (in|out)'
-        sleep .03 # vanity
     done
 
-    printf "\n"
+    # printf "\n"
 }
 
 main "$@"
