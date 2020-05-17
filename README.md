@@ -53,10 +53,9 @@ $ xxdiff oldfile newfile
  00030650: 4c89 fee8 628c 0c00 0f57 c00f 2985 a0f7  L...b....W..)...
 ```
 
-You can stop here, redirect the output to a file, and share it as-is or you
-can pipe the output to `xxdd` which will output a compact shell script
-fragment capable of applying the xxdiff on most Linux distributions (like
-Debian or Ubuntu) or macOS.
+You can stop here and share it as-is or you can pipe the output to `xxdd`
+which will output a compact shell script fragment capable of applying the
+xxdiff on most Linux distributions (like Debian or Ubuntu) or macOS.
 
 ```sh
 $ xxdiff oldfile newfile | xxdd
