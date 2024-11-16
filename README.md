@@ -15,7 +15,7 @@ See also [`bsdiff`](https://www.freebsd.org/cgi/man.cgi?query=bsdiff) and [`bspa
 ## Usage
 
 When you're ready to distribute your patch, run `xxdiff` to produce an
-_xxdiff_.
+"_xxdiff_".
 
 ```sh
 $ xxdiff oldfile newfile
