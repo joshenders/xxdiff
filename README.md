@@ -10,7 +10,7 @@
 `xxdiff` and `xxdd` are simple utilities which make distributing and applying
 binary patches easy and convenient.
 
-See also [`bsdiff`](https://www.freebsd.org/cgi/man.cgi?query=bsdiff) and [`bspatch`](https://www.freebsd.org/cgi/man.cgi?query=bspatch) as well as [IPS](http://fileformats.archiveteam.org/wiki/IPS_(binary_patch_format))
+See also [`bsdiff`](https://www.freebsd.org/cgi/man.cgi?query=bsdiff) and [`bspatch`](https://www.freebsd.org/cgi/man.cgi?query=bspatch) as well as [IPS](http://fileformats.archiveteam.org/wiki/IPS_(binary_patch_format)) and [`bindiff`](https://github.com/google/bindiff).
 
 ## Usage
 
